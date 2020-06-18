@@ -1,0 +1,12 @@
+
+- name: Copy File on AIX
+  hosts: all
+  gather_facts: True
+  
+  tasks:
+  - name: deploy root profile
+    copy:  
+      src: templates/root_profile 
+      dest: /root/profile 
+      owner: root 
+      group: system

@@ -1,0 +1,16 @@
+- name: Delete User and Group on AIX
+  hosts: all
+  gather_facts: False
+  
+  tasks:
+      
+  - name: Delete user "{{ user }}" 
+    user: 
+      name: "{{ user }}" 
+      group: "{{ user }}"
+      state: absent   
+  
+  - name: Delete group "{{ user }}" 
+    group: 
+      name: "{{ user }}" 
+      state: absent

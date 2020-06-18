@@ -1,0 +1,21 @@
+- name: Create User and Group on AIX
+  hosts: all
+  gather_facts: False
+  
+  tasks:
+  - name: Encrypt password
+    command: perl -e 'print crypt("{{ password }}", "salt")'
+    register: enc_password
+
+  - name: add group "{{ user }}" 
+    group: 
+      name: "{{ user }}" 
+      state: present
+      
+  - name: create user "{{ user }}" 
+    user: 
+      name: "{{ user }}" 
+      comment: "{{ user_name }}" 
+      group: "{{ user }}"
+      password: "{{ enc_password.stdout }}"
+      update_password: on_create
