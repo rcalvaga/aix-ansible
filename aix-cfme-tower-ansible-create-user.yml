@@ -3,6 +3,11 @@
   gather_facts: False
   
   tasks:
+  - name: Install perl if not exist
+    yum:
+      name: perl
+      state: latest
+      
   - name: Encrypt password
     command: perl -e 'print crypt("{{ password }}", "salt")'
     register: enc_password
