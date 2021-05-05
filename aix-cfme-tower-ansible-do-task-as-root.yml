@@ -1,0 +1,8 @@
+- name: Do Task As Root
+  hosts: all
+  gather_facts: True
+  
+  tasks:
+  - name: Run Command As Root
+    shell:  sudo -u root bash -c 'id'
+    become: yes
