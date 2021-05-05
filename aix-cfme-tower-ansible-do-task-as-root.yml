@@ -4,7 +4,5 @@
   
   tasks:
   - name: Run Command As Root
-    shell: bash -c 'id'
+    shell: sudo -u root bash -c 'id'
     become: yes
-    become_user: root
-    become_method: sudo
